@@ -11,13 +11,26 @@ export class NegociacaoController {
         this.inputValor = document.querySelector("#valor");
     }
 
-    adiciona(){
-        const negociacao = new Negociacao(
-            this.inputData.valueAsDate,
-            this.inputQuantidade.valueAsNumber,
-            this.inputValor.valueAsNumber
-        );
-
+    adiciona(): void{
+        const negociacao = this.criaNegociacao();
         console.log(negociacao);
+        this.clearForm();
+    }
+
+    criaNegociacao(): Negociacao {
+        //Regular expression
+        const exp = /-/g;
+        //get value on form and format type
+        const date = new Date(this.inputData.value.replace(exp, ','));
+        const quantidade = parseInt(this.inputQuantidade.value);
+        const valor = parseFloat(this.inputValor.value);
+        return new Negociacao(date, quantidade, valor);
+    }
+
+    clearForm(): void {
+        this.inputData.value = '';
+        this.inputQuantidade.value = '';
+        this.inputValor.value = '';
+        this.inputData.focus();
     }
 }

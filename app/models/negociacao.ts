@@ -9,12 +9,11 @@ export class Negociacao {
         this._valor = valor;
     }
 
-    get data() { return this._data};
+    get data(): Date { return this._data};
 
-    get quantidade() { return this._quantidade};
+    get quantidade(): number { return this._quantidade};
 
-    get valor() { return this._valor};
+    get valor():number { return this._valor};
 
-    get volume() { return this._quantidade * this._valor};
+    get volume():number { return this._quantidade * this._valor};
 }
-
