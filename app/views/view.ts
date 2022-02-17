@@ -1,3 +1,5 @@
+import { inspect } from "../decorators/inspect.js";
+
 export abstract class View<T> {
     //uma classe abstract não pode ser criada uma instancia diretamente dela.
     protected elemento: HTMLElement;
@@ -16,7 +18,8 @@ export abstract class View<T> {
             this.escapar = escapar;
         }
     }
-        
+    
+    @inspect()
     public update(model: T): void{
         let template = this.template(model);
         if (this.escapar) {
